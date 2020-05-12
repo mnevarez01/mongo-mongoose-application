@@ -14,7 +14,11 @@ app.use(express.static("public"));
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/custommethods", { useNewUrlParser: true });
 
+app.get("/")
+app.get("/stats")
+app.get("/exercise?")
 
+app.post("/exercise")
 
 
 app.listen(PORT, () => {
