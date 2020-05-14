@@ -7,7 +7,7 @@ router.post("/api/workouts", (req, res) => {
     .catch(err => { res.status(500).json(err) });
 });
 
-router.get("/api//workouts", (req, res) => {
+router.get("/api/workouts", (req, res) => {
   Workout.find()
     .then(dbWorkouts => { res.json(dbWorkouts) })
     .catch(err => { res.status(500).json(err) })
@@ -35,4 +35,4 @@ router.put("/api/workouts/:id", ({ body, params }, res) => {
     .catch(err => { res.status(500).json(err) });
 });
 
-module.exports = Router;
+module.exports = router;
