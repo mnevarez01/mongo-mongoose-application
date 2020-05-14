@@ -17,9 +17,17 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", { use
 
 app.get("/")
 app.get("/stats")
-app.get("/exercise?")
+app.get("/exercise?", (req, res) => {
+  db.find({})
+    .then(dbWorkout => res.status(200).json(dbWorkout))
+    .catch(err => res.json(err))
+})
 
-app.post("/exercise")
+app.post("/exercise?", ({ body }, res) => {
+  db.create(body)
+    .then(workout => res.json(workout))
+    .catch(err => res.status(500).json(err))
+});
 
 
 app.listen(PORT, () => {
